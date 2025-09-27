@@ -1,13 +1,11 @@
 <?php
-// الاتصال بقاعدة البيانات
 $host = "localhost";
-$user = "root"; // غيّر حسب إعداداتك
-$pass = "";     // غيّر حسب إعداداتك
+$user = "root"; 
+$pass = "";     
 $dbname = "medical_rfid_system";
 
 $conn = new mysqli($host, $user, $pass, $dbname);
 
-// التحقق من الاتصال
 if ($conn->connect_error) {
     die("Échec de connexion: " . $conn->connect_error);
 }
@@ -21,7 +19,6 @@ $municipality = $_POST['municipality'];
 $specialization = $_POST['specialization'];
 $email = $_POST['email'];
 
-// إدخال البيانات في الجدول
 $sql = "INSERT INTO join_requests (first_name, last_name, state, district, municipality, specialization, email)
         VALUES (?, ?, ?, ?, ?, ?, ?)";
 
@@ -37,3 +34,4 @@ if ($stmt->execute()) {
 $stmt->close();
 $conn->close();
 ?>
+
