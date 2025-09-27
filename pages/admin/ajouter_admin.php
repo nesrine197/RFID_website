@@ -6,7 +6,7 @@ $redirectScript = "";
 
 // Check connection
 if ($conn->connect_error) {
-    die("<p class='error'>❌ Échec de la connexion à la base de données: " . htmlspecialchars($conn->connect_error) . "</p>");
+    die("<p class='error'> Échec de la connexion à la base de données: " . htmlspecialchars($conn->connect_error) . "</p>");
 }
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $checkStmt->store_result();
 
             if ($checkStmt->num_rows > 0) {
-                $message = "<p class='error'>❌ Nom d'utilisateur déjà utilisé. Veuillez en choisir un autre.</p>";
+                $message = "<p class='error'> Nom d'utilisateur déjà utilisé. Veuillez en choisir un autre.</p>";
                 $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
             } else {
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -34,28 +34,28 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                     $stmt->bind_param("sss", $username, $hashedPassword, $name);
 
                     if ($stmt->execute()) {
-                        $message = "<p class='success'>✅ Administrateur ajouté avec succès.</p>";
+                        $message = "<p class='success'> Administrateur ajouté avec succès.</p>";
                         $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 2000);</script>";
                     } else {
-                        $message = "<p class='error'>❌ Une erreur est survenue: " . htmlspecialchars($stmt->error) . "</p>";
+                        $message = "<p class='error'> Une erreur est survenue: " . htmlspecialchars($stmt->error) . "</p>";
                         $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
                     }
 
                     $stmt->close();
                 } else {
-                    $message = "<p class='error'>❌ Erreur lors de la préparation de la requête (INSERT).</p>";
+                    $message = "<p class='error'> Erreur lors de la préparation de la requête (INSERT).</p>";
                     $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
                 }
             }
 
             $checkStmt->close();
         } else {
-            $message = "<p class='error'>❌ Erreur lors de la préparation de la requête (SELECT).</p>";
+            $message = "<p class='error'> Erreur lors de la préparation de la requête (SELECT).</p>";
             $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
         }
 
     } else {
-        $message = "<p class='error'>❌ Tous les champs sont obligatoires.</p>";
+        $message = "<p class='error'> Tous les champs sont obligatoires.</p>";
         $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
     }
 }
@@ -89,3 +89,4 @@ $conn->close();
     <?= $redirectScript ?>
 </body>
 </html>
+
