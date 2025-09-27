@@ -167,7 +167,7 @@ p {
   padding: 15px 10px;
   font-size: 16px;
   font-weight: 500;
-  position: relative; /* ممكن تغييره إلى fixed إذا تحب يثبت أسفل الصفحة */
+  position: relative; 
   bottom: 0;
   box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.2);
   letter-spacing: 0.5px;
