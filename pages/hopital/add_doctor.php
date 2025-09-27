@@ -2,14 +2,14 @@
 session_start();
 
 if (!isset($_SESSION['hospital_id'])) {
-    die("⛔ Accès non autorisé.");
+    die(" Accès non autorisé.");
 }
 
 $hospital_id = $_SESSION['hospital_id'];
 
 $conn = new mysqli("localhost", "root", "", "medical_rfid_system");
 if ($conn->connect_error) {
-    die("<p class='error'>❌ Erreur de connexion : " . htmlspecialchars($conn->connect_error) . "</p>");
+    die("<p class='error'> Erreur de connexion : " . htmlspecialchars($conn->connect_error) . "</p>");
 }
 
 $msg = "";
@@ -34,7 +34,7 @@ if (
     $checkStmt->store_result();
 
     if ($checkStmt->num_rows > 0) {
-        $msg = "<p class='error'>❌ Ce nom d'utilisateur est déjà utilisé. Veuillez en choisir un autre.</p>";
+        $msg = "<p class='error'> Ce nom d'utilisateur est déjà utilisé. Veuillez en choisir un autre.</p>";
         $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
     } else {
         // Ajouter le médecin
@@ -42,10 +42,10 @@ if (
         $stmt->bind_param("issss", $hospital_id, $username, $hashed_password, $name, $specialization);
 
         if ($stmt->execute()) {
-            $msg = "<p class='success'>✅ Le médecin a été ajouté avec succès.</p>";
+            $msg = "<p class='success'> Le médecin a été ajouté avec succès.</p>";
             $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
         } else {
-            $msg = "<p class='error'>❌ Une erreur s'est produite lors de l'ajout : " . htmlspecialchars($stmt->error) . "</p>";
+            $msg = "<p class='error'> Une erreur s'est produite lors de l'ajout : " . htmlspecialchars($stmt->error) . "</p>";
             $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
         }
 
@@ -54,7 +54,7 @@ if (
 
     $checkStmt->close();
 } else {
-    $msg = "<p class='error'>⚠️ Tous les champs sont requis.</p>";
+    $msg = "<p class='error'> Tous les champs sont requis.</p>";
     $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
 }
 
@@ -114,9 +114,10 @@ echo "<!DOCTYPE html>
 <body>
     <div class='container'>
         $msg
-        <p class='redirect-info'>🔁 Redirection automatique dans quelques secondes...</p>
+        <p class='redirect-info'> Redirection automatique dans quelques secondes...</p>
     </div>
     $redirectScript
 </body>
 </html>";
 ?>
+
