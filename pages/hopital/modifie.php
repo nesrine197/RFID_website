@@ -95,8 +95,9 @@ $stmt->close();
       <label>Nouveau dossier PDF (optionnel) :</label>
       <input type="file" name="pdf">
 
-      <button type="submit">💾 Enregistrer les modifications</button>
+      <button type="submit"> Enregistrer les modifications</button>
     </form>
   </div>
 </body>
 </html>
+
