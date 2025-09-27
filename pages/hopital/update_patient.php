@@ -1,7 +1,7 @@
 <?php
 $conn = new mysqli("localhost", "root", "", "medical_rfid_system");
 if ($conn->connect_error) {
-    $message = "❌ Échec de la connexion à la base de données.";
+    $message = " Échec de la connexion à la base de données.";
     $success = false;
 } else {
     $UID = $_POST['UID'];
@@ -53,10 +53,10 @@ if ($conn->connect_error) {
     $stmt->bind_param($types, ...$params);
 
     if ($stmt->execute()) {
-        $message = "✅ Les données du patient ont été mises à jour avec succès.";
+        $message = "Les données du patient ont été mises à jour avec succès.";
         $success = true;
     } else {
-        $message = "❌ Erreur lors de la mise à jour : " . $stmt->error;
+        $message = " Erreur lors de la mise à jour : " . $stmt->error;
         $success = false;
     }
 
@@ -124,3 +124,4 @@ if ($conn->connect_error) {
   </div>
 </body>
 </html>
+
