@@ -11,7 +11,7 @@ $redirectScript = "";
 
 // Check connection
 if ($conn->connect_error) {
-    die("<p class='error'>❌ Échec de connexion : " . htmlspecialchars($conn->connect_error) . "</p>");
+    die("<p class='error'> Échec de connexion : " . htmlspecialchars($conn->connect_error) . "</p>");
 }
 
 // Get and sanitize inputs
@@ -29,7 +29,7 @@ if ($name && $username && $passwordRaw && $specialization) {
 
     if ($checkStmt->num_rows > 0) {
         // Username taken
-        $message = "<p class='error'>❌ Ce nom d'utilisateur est déjà utilisé. Veuillez en choisir un autre.</p>";
+        $message = "<p class='error'> Ce nom d'utilisateur est déjà utilisé. Veuillez en choisir un autre.</p>";
         $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
     } else {
         // Proceed to insert
@@ -41,22 +41,22 @@ if ($name && $username && $passwordRaw && $specialization) {
             $stmt->bind_param("ssss", $username, $password, $name, $specialization);
 
             if ($stmt->execute()) {
-                $message = "<p class='success'>✅ Médecin ajouté avec succès !</p>";
+                $message = "<p class='success'> Médecin ajouté avec succès !</p>";
                 $redirectScript = "<script>setTimeout(() => { window.location.href = './dashboard.php'; }, 2000);</script>";
             } else {
-                $message = "<p class='error'>❌ Erreur lors de l’ajout : " . htmlspecialchars($stmt->error) . "</p>";
+                $message = "<p class='error'> Erreur lors de l’ajout : " . htmlspecialchars($stmt->error) . "</p>";
                 $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
             }
 
             $stmt->close();
         } else {
-            $message = "<p class='error'>❌ Erreur de préparation de la requête.</p>";
+            $message = "<p class='error'> Erreur de préparation de la requête.</p>";
         }
     }
 
     $checkStmt->close();
 } else {
-    $message = "<p class='error'>❌ Tous les champs sont obligatoires.</p>";
+    $message = "<p class='error'> Tous les champs sont obligatoires.</p>";
     $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
 }
 
@@ -119,9 +119,10 @@ echo "<!DOCTYPE html>
 <body>
     <div class='container'>
         $message
-        <p class='redirect-info'>🔁 Redirection automatique dans quelques secondes...</p>
+        <p class='redirect-info'> Redirection automatique dans quelques secondes...</p>
     </div>
     $redirectScript
 </body>
 </html>";
 ?>
+
