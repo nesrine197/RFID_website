@@ -9,7 +9,7 @@ if (!isset($_SESSION['doctor_id']) && !isset($_SESSION['hospital_doctor_id'])) {
 
 $conn = new mysqli("localhost", "root", "", "medical_rfid_system");
 if ($conn->connect_error) {
-    die("<p class='error'>❌ Échec de la connexion : " . htmlspecialchars($conn->connect_error) . "</p>");
+    die("<p class='error'> Échec de la connexion : " . htmlspecialchars($conn->connect_error) . "</p>");
 }
 
 $msg = "";
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $checkStmt->store_result();
 
     if ($checkStmt->num_rows > 0) {
-        $msg = "<p class='error'>❌ Cet identifiant UID est déjà utilisé. Veuillez en choisir un autre.</p>";
+        $msg = "<p class='error'> Cet identifiant UID est déjà utilisé. Veuillez en choisir un autre.</p>";
         $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
     } else {
         // Insertion des données
@@ -56,10 +56,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $stmt->bind_param("ssisssssii", $UID, $name, $age, $blood_type, $diagnosis, $now, $image_path, $pdf_path, $doctor_id, $hospital_doctor_id);
 
         if ($stmt->execute()) {
-            $msg = "<p class='success'>✅ Le dossier du patient a été enregistré avec succès.</p>";
+            $msg = "<p class='success'> Le dossier du patient a été enregistré avec succès.</p>";
             $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
         } else {
-            $msg = "<p class='error'>❌ Une erreur est survenue lors de l'enregistrement : " . htmlspecialchars($stmt->error) . "</p>";
+            $msg = "<p class='error'>Une erreur est survenue lors de l'enregistrement : " . htmlspecialchars($stmt->error) . "</p>";
             $redirectScript = "<script>setTimeout(() => { window.history.back(); }, 3000);</script>";
         }
 
@@ -127,9 +127,10 @@ echo "<!DOCTYPE html>
 <body>
     <div class='container'>
         $msg
-        <p class='redirect-info'>🔁 Redirection automatique dans quelques secondes...</p>
+        <p class='redirect-info'> Redirection automatique dans quelques secondes...</p>
     </div>
     $redirectScript
 </body>
 </html>";
 ?>
+
