@@ -126,11 +126,12 @@
       border-radius: 5px;
       cursor: pointer;
       font-size: 16px;
-    ">✏️ Modifier les données</button>
+    "> Modifier les données</button>
   </form>
 <?php endif; ?>
 
   </div>
 </body>
 </html>
+
 
