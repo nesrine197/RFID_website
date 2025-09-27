@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>page de demande</title>
     <style>
-        /* إعدادات عامة */
 * {
     margin: 0;
     padding: 0;
@@ -53,7 +52,6 @@ body::before {
     animation: fadeIn 0.5s ease-out;
 }
 
-/* تأثير ظهور */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -65,14 +63,12 @@ body::before {
     }
 }
 
-/* العنوان */
 h3 {
     font-size: 24px;
     color: #2a7f64;
     margin-bottom: 20px;
 }
 
-/* تنسيق النموذج */
 form {
     display: flex;
     flex-direction: column;
@@ -123,7 +119,6 @@ button:hover {
     background-color: #1e674f;
 }
 
-/* تحسين شكل النموذج عند الطباعة */
 @media print {
     body {
         padding: 0;
@@ -179,4 +174,5 @@ button:hover {
 </div>
  
 </body>
+
 </html>
